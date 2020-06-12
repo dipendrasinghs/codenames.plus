@@ -404,7 +404,15 @@ function newGame(socket){
 function switchRole(socket, data){
   if (!PLAYER_LIST[socket.id]) return // Prevent Crash
   let room = PLAYER_LIST[socket.id].room // Get the room that the client called from
-
+  var c = 0
+  for(var p in PLAYER_LIST){
+    if (PLAYER_LIST[p].role == 'spymaster'){
+      c = c + 1
+    }
+  }
+  if(c >= 2){
+    socket.emit('switchRoleResponse', {success:false})
+  }
   if (PLAYER_LIST[socket.id].team === 'undecided'){
     // Dissallow the client a role switch if they're not on a team
     socket.emit('switchRoleResponse', {success:false})
