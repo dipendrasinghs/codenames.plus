@@ -412,7 +412,10 @@ function switchRole(socket, data){
   }
   console.log("checking")
   console.log("count: "+ c)
-  if(c >= 2){
+  if(ROOM_LIST[room].game.over){
+    socket.emit('switchRoleResponse', {success:true, role:data.role})
+  }
+  else if(c >= 2){
     socket.emit('switchRoleResponse', {success:false})
   }
   else if (PLAYER_LIST[socket.id].team === 'undecided'){
