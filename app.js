@@ -406,10 +406,12 @@ function switchRole(socket, data){
   let room = PLAYER_LIST[socket.id].room // Get the room that the client called from
   var c = 0
   for(var p in PLAYER_LIST){
-    if (PLAYER_LIST[p].role == 'spymaster'){
+    if (PLAYER_LIST[p].role === 'spymaster'){
       c = c + 1
     }
   }
+  console.log("checking")
+  console.log("count: "+ c)
   if(c >= 2){
     socket.emit('switchRoleResponse', {success:false})
   }
