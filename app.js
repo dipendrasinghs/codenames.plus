@@ -414,6 +414,7 @@ function switchRole(socket, data){
   console.log("count: "+ c)
   if(ROOM_LIST[room].game.over){
     socket.emit('switchRoleResponse', {success:true, role:data.role})
+    gameUpdate(room)
   }
   else if(c >= 2){
     socket.emit('switchRoleResponse', {success:false})
