@@ -415,7 +415,7 @@ function switchRole(socket, data){
   if(c >= 2){
     socket.emit('switchRoleResponse', {success:false})
   }
-  if (PLAYER_LIST[socket.id].team === 'undecided'){
+  else if (PLAYER_LIST[socket.id].team === 'undecided'){
     // Dissallow the client a role switch if they're not on a team
     socket.emit('switchRoleResponse', {success:false})
   } else {
