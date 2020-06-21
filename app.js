@@ -14,6 +14,7 @@ let server = app.listen(process.env.PORT || 2000, listen);
 function listen(){
   let host = server.address().address;
   let port = server.address().port;
+  console.log("Server is starting")
   console.log('Codenames Server Started at http://' + host + ':' + port);
 }
 
